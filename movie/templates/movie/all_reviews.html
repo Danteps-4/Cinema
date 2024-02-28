@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %} {% block title %}{{movie.title}}-All reviews{% endblock %} {% block content %}
+
+<a href="{% url 'movie:detail' movie.id %}">{{movie.title}} ({{movie.release_date}})</a>
+<a href="{% url 'movie:detail' movie.id %}">Back to main</a>
+
+<a href="#">Write review</a>
+
+<div class="review-container">
+    {% for review in reviews %}
+    <div>
+        <a href="{% url 'review:view' review.id %}">A review by {{review.author}}</a>
+        <p>{{review.author_details.rating}} Written by {{review.author}} on {{review.created_at}}</p>
+        <p>{{review.content}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

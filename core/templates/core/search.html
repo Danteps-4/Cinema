@@ -1,0 +1,7 @@
+{% extends 'core/base.html' %} {% block title %}Home {% endblock %} {% block content %}
+<h1>Search: "{{query}}"</h1>
+
+
+{% for movie in movies %}
+<p>{{movie.title}}</p>
+{% endfor %} {% endblock %}
