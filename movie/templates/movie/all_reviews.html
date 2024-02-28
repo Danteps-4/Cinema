@@ -1,9 +1,14 @@
-{% extends 'core/base.html' %} {% block title %}{{movie.title}}-All reviews{% endblock %} {% block content %}
+{% extends 'core/base.html' %} 
+{% block title %}{{movie.title}}-All reviews{% endblock %} 
 
-<a href="{% url 'movie:detail' movie.id %}">{{movie.title}} ({{movie.release_date}})</a>
-<a href="{% url 'movie:detail' movie.id %}">Back to main</a>
+{% block content %}
 
-<a href="#">Write review</a>
+<a href="{% url 'movie:detail' movie.id %}">{{movie.title}} ({{movie.release_date}})</a> 
+{% if user.is_authenticated %}
+<a href="#">Write review</a> 
+{% else %}
+<p>Login to write a review</p>
+{% endif %}
 
 <div class="review-container">
     {% for review in reviews %}

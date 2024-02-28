@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %} {% block title %}{{person.name}}{% endblock %} {% block content %}
+
+<div>
+    <div class="image">
+        <img src="{{ profile_path }}" alt="{{person.name}}">
+    </div>
+    <h3>Personal Info</h3>
+
+    <h4>Known For</h4>
+    <p>{{person.known_for_department}}</p>
+
+    <h4>Gender</h4>
+    {% if person.gender == 0 %}
+    <p>Not specified</p>
+    {% elif person.gender == 1 %}
+    <p>Female</p>
+    {% elif person.gender == 2 %}
+    <p>Male</p>
+    {% else %}
+    <p>Non-binary</p>
+    {% endif %}
+
+    <h4>Birthday</h4>
+    {% if birthday == "" %}
+    <p>-</p>
+    {% else %}
+    <p>{{person.birthday}}</p>
+    {% endif %}
+
+    <h4>Place of birth</h4>
+    {% if place_of_birth == "" %}
+    <p>-</p>
+    {% else %}
+    <p>{{person.place_of_birth}}</p>
+    {% endif %}
+
+</div>
+
+<div>
+    <h1>{{person.name}}</h1>
+    <h3>Biography</h3>
+
+    {% if person.biography == "" %}
+    <p>We don't have a biography for {{person.name}}.</p>
+    {% else %}
+    <p>{{person.biography}}</p>
+    {% endif %}
+</div>
+
+{% endblock %}

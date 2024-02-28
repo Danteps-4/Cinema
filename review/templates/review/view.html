@@ -1,4 +1,7 @@
-{% extends 'core/base.html' %} {% block title %}Review by {{review.author}}{% endblock %} {% block content %}
+{% extends 'core/base.html' %} 
+{% block title %}Review by {{review.author}}{% endblock %} 
+
+{% block content %}
 <h1>Review by <a href="#">{{review.author}}</a></h1>
 <p>{{review.content}}</p>
 {% endblock %}

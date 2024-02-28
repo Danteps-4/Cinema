@@ -16,7 +16,7 @@
         <ul>
             <li class="logo"><a href="/">Cinemacenter</a></li>
             <div class="items">
-                <li><a href="#">Movie</a></li>
+                <li><a href="{% url 'movie:movies' %}">Movies</a></li>
                 <li><a href="#">TV Shows</a></li>
                 <li><a href="#">People</a></li>
                 {% if user.is_authenticated %}

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %} {% block title %}Movies{% endblock %} {% block content %}
+<h1>Movies</h1>
+<div class="filter">
+    <h2>Filters</h2>
+
+    <h4>Sort results by</h4>
+
+
+    <h4>Genres</h4>
+    {% for genre in genres %}
+    <a href="#">{{genre.name}}</a> {% endfor %}
+
+    <h4>Languages</h4>
+    {% for language in languages %}
+    <a href="#">{{language.english_name}}</a> {% endfor %}
+</div>
+
+<div class="movies">
+    {% for movie in movies %}
+    <div class="movie">
+        <a href="{% url 'movie:detail' movie.id %}">{{movie.title}}</a>
+        <p>{{movie.release_date}}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% for movie in movies %} {% endfor %} {% endblock %}

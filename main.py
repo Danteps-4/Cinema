@@ -78,6 +78,31 @@ def get_review(review_id):
     json_result = json.loads(result.content)
     return json_result
 
+def get_person(person_id):
+    url = f"https://api.themoviedb.org/3/person/{person_id}"
+
+    result = requests.get(url, headers=headers)
+    json_result = json.loads(result.content)
+    return json_result
+
+def get_url_of_image(image_path):
+    url = f"https://image.tmdb.org/t/p/w500/{image_path}"
+    return url
+
+def get_available_genres():
+    url = "https://api.themoviedb.org/3/genre/movie/list"
+
+    result = requests.get(url, headers=headers)
+    json_result = json.loads(result.content)["genres"]
+    return json_result
+
+def get_available_languages():
+    url = "https://api.themoviedb.org/3/configuration/languages"
+
+    result = requests.get(url, headers=headers)
+    json_result = json.loads(result.content)
+    return json_result
+
 def minutes_to_hours(minutes):
     hours = minutes//60
     minu = minutes%60
@@ -110,5 +135,5 @@ if __name__ == "__main__":
     # for recommendation in recommendations:
     #     print(recommendation["title"])
 
-    movie = search_movie("wonka", 1)
-    print(movie)
+    cast = get_movie_cast(969492)
+    print(cast[0]["id"])

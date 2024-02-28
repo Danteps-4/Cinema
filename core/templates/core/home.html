@@ -3,13 +3,25 @@
 <div class="home-page">
     <div class="container">
         <h2 class="title">Trending of the day</h2>
-        <div>
+        <div class="horizontal-scroll">
             {% for movie in trending_movies_day %}
-            <a href="{% url 'movie:detail' movie.id %}">{{movie.title}}</a> {% endfor %}
+            <div class="movie">
+                <div class="image">
+                    <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="{{movie.title}}">
+                </div>
+                <a href="{% url 'movie:detail' movie.id %}">{{movie.title}}</a>
+            </div>
+            {% endfor %}
+            <div class="view-all">
+                <a href="#">View all</a>
+            </div>
         </div>
         <h2 class="title">What's popular</h2>
-        <div>
+        <div class="horizontal-scroll">
             {% for movie in popular_movies %}
+            <div class="image">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="{{movie.title}}">
+            </div>
             <a href="">{{movie.title}}</a> {% endfor %}
         </div>
     </div>

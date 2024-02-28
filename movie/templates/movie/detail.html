@@ -1,6 +1,9 @@
 {% extends 'core/base.html' %} {% block title %}{{movie.title}}{% endblock %} {% block content %}
 
 <div class="container">
+    <div class="image">
+        <img src="{{movie.image}}" alt="{{movie.name}}">
+    </div>
     <p class="title"><strong>{{movie.title}}</strong> {{movie.runtime}}</p>
     {% for genre in movie.genres %}
     <a href="#">{{genre.name}}</a> {% endfor %}
@@ -12,10 +15,14 @@
     <h2>Series cast</h2>
     {% for person in movie.cast %}
     <div class="cast">
-        <strong>{{person.character}}</strong>
-        <p>{{person.name}}</p>
+        <div class="image">
+            <img src="https://image.tmdb.org/t/p/w500/{{person.profile_path}}" alt="{{person.name}}">
+        </div>
+        <a href="{% url 'person:detail' person.id %}">{{person.name}}</a>
+        <p>{{person.character}}</p>
     </div>
     {% endfor %}
+    <a href="#">View all</a>
 
     <h2>Reviews</h2>
     <div class="review">
@@ -23,18 +30,14 @@
         <p>Written by {{movie.reviews.0.author}} on {{movie.reviews.0.created_at}}</p>
         <p>{{movie.reviews.0.content}}</p>
     </div>
-    <!-- {% for review in movie.reviews %}
-    <div class="review">
-        <a href="#">A review by {{review.author}}</a>
-        <p>Written by {{review.author}} on {{review.created_at}}</p>
-        <p>{{review.content}}</p>
-    </div>
-    {% endfor %} -->
     <a href="{% url 'movie:all_reviews' movie.id %}">Read all reviews</a>
 
     <h2>Recommendations</h2>
     {% for recommendation in movie.recommendations %}
     <div class="recommendations">
+        <div class="image">
+            <img src="https://image.tmdb.org/t/p/w500/{{recommendation.poster_path}}" alt="{{recommendation.title}}">
+        </div>
         <a href="{% url 'movie:detail' recommendation.id %}">{{recommendation.title}}</a>
     </div>
     {% endfor %}

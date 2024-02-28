@@ -3,8 +3,8 @@ import main
 
 # Create your views here.
 def home(request):
-    trending_movies_day = main.get_trending_movies("day")
-    popular_movies = main.get_popular_movies()
+    trending_movies_day = main.get_trending_movies("day")[:5]
+    popular_movies = main.get_popular_movies()[:5]
     return render(request, "core/home.html", {"trending_movies_day": trending_movies_day, "popular_movies": popular_movies})
 
 def search(request):
